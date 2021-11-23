@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 //顯示所有任務的清單
 Route::get('/', function () {
-    return view('tasks');
+    $tasks = Task::orderBy('created_at','asc')->get();
+    return view('tasks',['tasks'=>$tasks]);
+    //將取出的資料$tasks傳遞給tasks視圖
 });
 //增加新的任務
 Route::post('/task',function(\http\Env\Request $request){
