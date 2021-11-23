@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::post('/task',function(\http\Env\Request $request){
     //驗證輸入
     $validator = Validator::make($request->all(),[
-        'name'=>'required|max:255'
+        'name'=>'required|max:255',
     ]);
     if($validator->fails()){
         return redirect('/')
